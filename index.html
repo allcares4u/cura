@@ -180,17 +180,25 @@
   }
 
   /* Insurance */
-  .insurance { background: var(--cream); }
+  .insurance { background: linear-gradient(180deg, #f3f7fc 0%, var(--sky) 100%); }
   .insurance-box {
-    display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;
-    background: #fff; border-radius: 20px; padding: 44px; border: 1px solid var(--line);
+    display: grid; grid-template-columns: auto 1fr auto; gap: 40px; align-items: center;
+    background: #fff; border-radius: 28px; padding: 48px; box-shadow: 0 20px 50px rgba(27,54,100,.08);
   }
-  .insurance-box .shield { width: 84px; height: 84px; border-radius: 50%; background: var(--sky); color: var(--navy); display: grid; place-items: center; }
-  .insurance-box .shield svg { width: 42px; height: 42px; }
-  .insurance-box h2 { font-size: clamp(26px, 3.4vw, 34px); margin-bottom: 10px; }
-  .insurance-box p { color: var(--muted); }
-  .insurance-box small { display: block; margin-top: 12px; font-size: 15px; color: var(--muted); font-style: italic; }
-  @media (max-width: 700px) { .insurance-box { grid-template-columns: 1fr; padding: 30px; } }
+  .insurance-box .shield { width: 96px; height: 96px; border-radius: 24px; background: var(--sky); color: var(--navy); display: grid; place-items: center; }
+  .insurance-box .shield svg { width: 44px; height: 44px; }
+  .insurance-box .eyebrow { margin-bottom: 8px; }
+  .insurance-box h2 { font-size: clamp(28px, 3.6vw, 40px); margin-bottom: 12px; }
+  .insurance-box p { color: var(--muted); max-width: 640px; }
+  .insurance-box small { display: block; margin-top: 14px; font-size: 15px; color: var(--muted); font-style: italic; }
+  .insurance-box .btn { box-shadow: 0 12px 26px rgba(195,36,47,.25); white-space: nowrap; }
+  @media (max-width: 960px) { .insurance-box { grid-template-columns: auto 1fr; } .insurance-box .btn { grid-column: 2; justify-self: start; } }
+  @media (max-width: 700px) {
+    .insurance-box { grid-template-columns: 1fr; gap: 22px; padding: 30px 24px; }
+    .insurance-box .shield { width: 72px; height: 72px; border-radius: 20px; }
+    .insurance-box .shield svg { width: 34px; height: 34px; }
+    .insurance-box .btn { grid-column: auto; }
+  }
 
   /* Why + areas */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
@@ -364,12 +372,14 @@
   <section class="insurance" id="insurance">
     <div class="wrap">
       <div class="insurance-box">
-        <div class="shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <div class="shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 20 6.5v11L12 22l-8-4.5v-11z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div>
         <div>
-          <h2>Long-Term Care Insurance Accepted</h2>
-          <p>We work with families using long-term care insurance benefits and can provide detailed invoices and care documentation to help with reimbursement claims.</p>
-          <small>Coverage and reimbursement are subject to your individual insurance policy.</small>
+          <span class="eyebrow">Support With Benefits</span>
+          <h2>Long-term care insurance support</h2>
+          <p>We work with families who use long-term care insurance benefits and can provide detailed invoices and care documentation to help support reimbursement claims.</p>
+          <small>Coverage, eligibility, and reimbursement depend on the terms of your individual policy.</small>
         </div>
+        <a class="btn btn-red" href="tel:+17034590883">Ask Us About Coverage</a>
       </div>
     </div>
   </section>

@@ -41,6 +41,12 @@
     "postalCode": "22202",
     "addressCountry": "US"
   },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
   "areaServed": ["Arlington, VA", "Alexandria, VA", "Falls Church, VA", "Fairfax, VA", "McLean, VA", "Springfield, VA", "Woodbridge, VA", "Fredericksburg, VA"]
 }
 </script>
@@ -141,7 +147,7 @@
   /* Hero photo: phones only (desktop shows the bear card instead) */
   .hero-photo { display: none; }
   @media (max-width: 860px) {
-    .hero-photo { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); margin-bottom: 28px; box-shadow: 0 12px 30px rgba(27,54,100,.12); }
+    .hero-photo { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); margin-bottom: 28px; box-shadow: 0 12px 30px rgba(27,54,100,.12); }
   }
 
   /* Mission strip */
@@ -257,7 +263,7 @@
     background: var(--sky); color: var(--navy); font-weight: 600; padding: 9px 18px; border-radius: 999px; font-size: 17px;
   }
   .areas-note { margin-top: 16px; color: var(--muted); font-style: italic; }
-  .side-photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 44px rgba(27,54,100,.12); }
+  .side-photo { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 44px rgba(27,54,100,.12); }
   @media (max-width: 860px) { .areas-grid { grid-template-columns: 1fr; gap: 36px; } }
 
   /* Contact */
@@ -271,6 +277,19 @@
   .contact-card .label { font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
   .contact-card .value { font-size: 20px; font-weight: 700; color: var(--navy); word-break: break-word; }
   .contact-cta { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; }
+
+  /* Peace of mind (trust points, near the bottom) */
+  .trust { background: var(--sky); }
+  .trust-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: center; }
+  .trust-grid .section-head { margin-bottom: 28px; }
+  .trust-list { list-style: none; display: grid; gap: 14px; }
+  .trust-list li {
+    display: flex; align-items: center; gap: 18px; background: #fff; border-radius: 18px; padding: 18px 22px;
+    font-weight: 600; color: var(--navy); font-size: 19px; line-height: 1.35; box-shadow: 0 8px 22px rgba(27,54,100,.06);
+  }
+  .trust-list .icon { margin: 0; flex-shrink: 0; width: 52px; height: 52px; }
+  .trust-photo { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 44px rgba(27,54,100,.12); }
+  @media (max-width: 860px) { .trust-grid { grid-template-columns: 1fr; gap: 36px; } }
 
   /* Footer */
   footer { background: var(--navy-dark); color: #c9d4e3; padding: 40px 0; font-size: 16px; }
@@ -497,6 +516,29 @@
           <span class="label">Office</span>
           <span class="value">2611 South Clark St. Suite 600<br>Arlington, VA 22202</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Peace of mind
+       EDIT HERE: each <li> is one trust point. Change the text after the icon, or delete a whole <li> to remove it. -->
+  <section class="trust" aria-label="Peace of mind">
+    <div class="wrap trust-grid">
+      <img class="trust-photo" src="images/hands-reaching-700.webp"
+           srcset="images/hands-reaching-700.webp 700w, images/hands-reaching-1200.webp 1200w"
+           sizes="(max-width: 860px) 100vw, 50vw" width="1200" height="801" loading="lazy"
+           alt="Two people reach out and hold hands">
+      <div>
+        <div class="section-head">
+          <span class="eyebrow">Peace of Mind</span>
+          <h2>Care you can count on</h2>
+        </div>
+        <ul class="trust-list">
+          <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span> Our PCAs, CNAs, and RNs are fully background-checked and insured</li>
+          <li><span class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span> Locally owned and operated</li>
+          <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Open 24/7</li>
+          <li><span class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></span> Long-term care insurance accepted</li>
+        </ul>
       </div>
     </div>
   </section>

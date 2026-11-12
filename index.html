@@ -212,20 +212,31 @@
   }
 
   /* Services */
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
-  @media (min-width: 1000px) { .services-grid { grid-template-columns: repeat(4, 1fr); } .service { padding: 24px; } }
+  .services { padding-top: 120px; }
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  @media (max-width: 1060px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; gap: 16px; } .services { padding-top: 88px; } }
   .service {
-    border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; background: #fff;
-    transition: box-shadow .2s, transform .2s;
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 28px;
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
   }
-  .service:hover { box-shadow: 0 12px 30px rgba(27,54,100,.08); transform: translateY(-2px); }
+  .service:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
   .icon {
-    width: 52px; height: 52px; border-radius: 12px; background: var(--terra-tint); color: var(--terra);
-    display: grid; place-items: center; margin-bottom: 16px;
+    width: 56px; height: 56px; border-radius: 50%; background: var(--terra-tint); color: var(--terra);
+    display: grid; place-items: center; margin-bottom: 18px;
   }
   .icon svg { width: 26px; height: 26px; }
-  .service h3 { font-size: 21px; margin-bottom: 6px; }
-  .service p { color: var(--muted); font-size: 17px; }
+  .service h3 { font-size: 22px; margin-bottom: 8px; }
+  .service p { color: var(--muted); font-size: 18px; line-height: 1.55; }
+  .service-photo { position: relative; border-radius: var(--radius); overflow: hidden; min-height: 260px; background: var(--sand); }
+  .service-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: transform .8s var(--ease); }
+  .service-photo:hover img { transform: scale(1.04); }
+  @media (max-width: 600px) {
+    .service-photo { height: 340px; }
+    .service { display: grid; grid-template-columns: 52px 1fr; column-gap: 16px; padding: 22px 20px; }
+    .service .icon { grid-row: span 2; width: 52px; height: 52px; margin: 0; }
+    .service h3 { font-size: 21px; margin: 2px 0 4px; }
+  }
 
   /* Insurance */
   .insurance { background: var(--cream); }
@@ -376,48 +387,55 @@
   </section>
 
   <!-- Services -->
-  <section id="services">
+  <section class="services" id="services">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">What We Do</span>
-        <h2>Support for everyday life</h2>
-        <p>Every care plan is built around your loved one’s needs, routines, and preferences.</p>
+        <span class="eyebrow">How we can help</span>
+        <h2>Help with the everyday things</h2>
+        <p>Every care plan is built around your loved one: their needs, their routines, and the way they like things done.</p>
       </div>
       <div class="services-grid">
         <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg></div>
-          <h3>Personal Care Assistance</h3>
-          <p>Bathing, grooming, dressing, continence care, and hygiene support.</p>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg></div>
+          <h3>Personal Care</h3>
+          <p>Gentle, respectful help with bathing, dressing, grooming, and using the bathroom.</p>
         </div>
         <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
           <h3>Meal Preparation</h3>
-          <p>Nutritious meals tailored to individual dietary needs and preferences.</p>
+          <p>Healthy meals made the way your loved one likes them, with their diet in mind.</p>
         </div>
         <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
           <h3>Companionship</h3>
-          <p>Meaningful engagement, conversation, and emotional support.</p>
+          <p>Good conversation, shared activities, and a friendly face to look forward to.</p>
         </div>
         <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
           <h3>Medication Reminders</h3>
-          <p>Timely reminders for a healthier, safer daily routine.</p>
+          <p>Gentle reminders to take medicines at the right time each day.</p>
         </div>
         <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
           <h3>Light Housekeeping</h3>
-          <p>Help keeping a clean, comfortable, and safe living environment.</p>
+          <p>Tidying up to keep the home clean, safe, and comfortable.</p>
         </div>
         <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14v-5l-2-5H7l-2 5z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/><path d="M5 12h14"/></svg></div>
-          <h3>Transportation Assistance</h3>
-          <p>Rides to appointments, errands, and community outings.</p>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14v-5l-2-5H7l-2 5z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/><path d="M5 12h14"/></svg></div>
+          <h3>Transportation</h3>
+          <p>Rides to appointments, errands, and outings around town.</p>
         </div>
         <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></div>
           <h3>Respite Care</h3>
-          <p>Reliable support for family caregivers, so you can rest and recharge.</p>
+          <p>A break for family caregivers, so you can rest knowing your loved one is in good hands.</p>
+        </div>
+        <div class="service-photo">
+          <img src="images/companionship-book-600.webp"
+               srcset="images/companionship-book-600.webp 600w, images/companionship-book-900.webp 900w"
+               sizes="(max-width: 600px) 100vw, (max-width: 1060px) 50vw, 280px"
+               width="900" height="1350" loading="lazy"
+               alt="A young woman and an older woman laugh together while reading a book">
         </div>
       </div>
     </div>

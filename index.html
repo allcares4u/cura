@@ -187,9 +187,29 @@
     .hero-badge { display: none; }
   }
 
-  /* Mission strip */
-  .mission { background: var(--navy); color: #fff; padding: 56px 0; text-align: center; }
-  .mission p { font-family: "Fraunces", Georgia, serif; font-size: clamp(22px, 3vw, 28px); max-width: 820px; margin: 0 auto; line-height: 1.45; }
+  /* Trust strip (sits just under the hero) */
+  .trust { padding: 0; margin-top: -48px; position: relative; z-index: 2; }
+  .trust-list {
+    list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    background: var(--paper); border-radius: 22px; padding: 14px; box-shadow: var(--shadow);
+  }
+  .trust-list li { display: flex; align-items: center; gap: 14px; padding: 14px 16px; font-weight: 600; color: var(--navy); line-height: 1.35; font-size: 18px; }
+  .trust-list li + li { border-left: 1px solid var(--line); }
+  .trust-icon {
+    width: 48px; height: 48px; border-radius: 50%; background: var(--terra-tint); color: var(--terra);
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .trust-icon svg { width: 24px; height: 24px; }
+  @media (max-width: 1000px) {
+    .trust-list { grid-template-columns: 1fr 1fr; }
+    .trust-list li + li { border-left: 0; }
+  }
+  @media (max-width: 600px) {
+    .trust { margin-top: -36px; }
+    .trust-list { grid-template-columns: 1fr; padding: 8px 6px; gap: 0; }
+    .trust-list li { padding: 12px 14px; }
+    .trust-list li + li { border-top: 1px solid var(--line); }
+  }
 
   /* Services */
   .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
@@ -328,12 +348,32 @@
     </div>
   </section>
 
-  <!-- Mission -->
-  <div class="mission">
+  <!-- Trust strip
+       EDIT HERE: confirm each line with the owner before going live.
+       To change a line, edit only the text after the </span>.
+       To remove a line, delete its whole <li>...</li>. -->
+  <section class="trust" aria-label="Why you can trust us">
     <div class="wrap">
-      <p>Personalized, non-medical home care that helps people live safely, comfortably, and with dignity, at home and on their own terms.</p>
+      <ul class="trust-list">
+        <li>
+          <span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.2 17 22l-5-3-5 3 1.5-8.8"/></svg></span>
+          Our Personal Care Aides (PCAs) have CNA backgrounds
+        </li>
+        <li>
+          <span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          Fully insured
+        </li>
+        <li>
+          <span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></span>
+          Long-term care insurance accepted
+        </li>
+        <li>
+          <span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+          Locally owned and operated
+        </li>
+      </ul>
     </div>
-  </div>
+  </section>
 
   <!-- Services -->
   <section id="services">

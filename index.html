@@ -238,33 +238,55 @@
     .service h3 { font-size: 21px; margin: 2px 0 4px; }
   }
 
-  /* Insurance */
-  .insurance { background: var(--cream); }
-  .insurance-box {
-    display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;
-    background: #fff; border-radius: 20px; padding: 44px; border: 1px solid var(--line);
+  /* Our care (why families choose us) */
+  .care { background: var(--paper); }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .split-photo { border-radius: 26px; overflow: hidden; box-shadow: var(--shadow); background: var(--sand); }
+  .split-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .care .split-photo { aspect-ratio: 4 / 4.6; }
+  .care .split-photo img { object-position: 45% 50%; }
+  .care .section-head { margin-bottom: 28px; }
+  .checks { list-style: none; display: grid; gap: 16px; }
+  .checks li { display: flex; gap: 14px; align-items: flex-start; }
+  .checks .tick {
+    width: 30px; height: 30px; border-radius: 50%; background: var(--terra-tint); color: var(--terra);
+    display: grid; place-items: center; flex-shrink: 0; margin-top: 1px;
   }
-  .insurance-box .shield { width: 84px; height: 84px; border-radius: 50%; background: var(--sand); color: var(--navy); display: grid; place-items: center; }
-  .insurance-box .shield svg { width: 42px; height: 42px; }
-  .insurance-box h2 { font-size: clamp(26px, 3.4vw, 34px); margin-bottom: 10px; }
-  .insurance-box p { color: var(--muted); }
-  .insurance-box small { display: block; margin-top: 12px; font-size: 15px; color: var(--muted); font-style: italic; }
-  @media (max-width: 700px) { .insurance-box { grid-template-columns: 1fr; padding: 30px; } }
+  .checks svg { width: 16px; height: 16px; }
+  .values { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+  .values span {
+    font-family: "Fraunces", Georgia, serif; color: var(--navy); font-size: 19px;
+    padding: 6px 18px; border: 1px solid var(--line); border-radius: 999px; background: var(--cream);
+  }
+  @media (max-width: 900px) {
+    .split { grid-template-columns: 1fr; gap: 40px; }
+    .care .split-photo { aspect-ratio: 4 / 3; }
+  }
 
-  /* Why + areas */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
-  @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; gap: 64px; } }
-  .checks { list-style: none; display: grid; gap: 14px; }
-  .checks li { display: flex; gap: 14px; align-items: flex-start; font-size: 18px; }
-  .checks svg { width: 24px; height: 24px; color: var(--terra); flex-shrink: 0; margin-top: 2px; }
+  /* Insurance */
+  .insurance { background: var(--sand); }
+  .insurance-box {
+    display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center;
+    background: var(--paper); border-radius: 24px; padding: 48px; box-shadow: var(--shadow);
+  }
+  .insurance-box .shield { width: 88px; height: 88px; border-radius: 50%; background: var(--terra-tint); color: var(--terra); display: grid; place-items: center; }
+  .insurance-box .shield svg { width: 42px; height: 42px; }
+  .insurance-box h2 { font-size: clamp(28px, 3.6vw, 38px); margin-bottom: 12px; }
+  .insurance-box p { color: var(--muted); max-width: 680px; }
+  .insurance-box small { display: block; margin-top: 14px; font-size: 16px; color: var(--muted); font-style: italic; }
+  @media (max-width: 700px) { .insurance-box { grid-template-columns: 1fr; gap: 20px; padding: 32px 26px; } .insurance-box .shield { width: 68px; height: 68px; } .insurance-box .shield svg { width: 32px; height: 32px; } }
+
+  /* Where we serve */
+  .areas-section .section-head { margin-bottom: 28px; }
   .areas { display: flex; flex-wrap: wrap; gap: 10px; }
   .areas span {
-    background: var(--sand); color: var(--navy); font-weight: 600; padding: 9px 18px; border-radius: 999px; font-size: 17px;
+    background: var(--paper); color: var(--navy); font-weight: 600; padding: 9px 18px; border-radius: 999px; font-size: 18px;
+    border: 1px solid var(--line);
   }
-  .areas-note { margin-top: 16px; color: var(--muted); font-style: italic; }
-  .values { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
-  .values span { font-family: "Fraunces", Georgia, serif; color: var(--navy); font-size: 20px; }
-  .values span::before { content: "♥"; color: var(--terra); font-size: 14px; margin-right: 8px; position: relative; top: -2px; }
+  .areas-note { margin-top: 22px; color: var(--muted); }
+  .areas-note a { color: var(--terra-text); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .areas-section .split-photo { aspect-ratio: 3 / 2; }
+  @media (max-width: 900px) { .areas-section .split-photo { order: -1; } }
 
   /* Quote */
   .quote { background: var(--sand); text-align: center; padding: 72px 0; }
@@ -441,50 +463,70 @@
     </div>
   </section>
 
-  <!-- Insurance -->
-  <section class="insurance" id="insurance">
-    <div class="wrap">
-      <div class="insurance-box">
-        <div class="shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <div>
-          <h2>Long-Term Care Insurance Accepted</h2>
-          <p>We work with families using long-term care insurance benefits and can provide detailed invoices and care documentation to help with reimbursement claims.</p>
-          <small>Coverage and reimbursement are subject to your individual insurance policy.</small>
+  <!-- Our care -->
+  <section class="care" id="care">
+    <div class="wrap split">
+      <div class="split-photo">
+        <img src="images/care-hands-held-700.webp"
+             srcset="images/care-hands-held-700.webp 700w, images/care-hands-held-1200.webp 1200w"
+             sizes="(max-width: 900px) 100vw, 50vw"
+             width="1200" height="799" loading="lazy"
+             alt="An older woman and a younger woman hold hands and talk on a sofa">
+      </div>
+      <div>
+        <div class="section-head">
+          <span class="eyebrow">Our care</span>
+          <h2>Care built on kindness and trust</h2>
+          <p>We treat every client the way we would want our own family treated. We take time to get to know your loved one, then build a care plan around what matters to them.</p>
+        </div>
+        <ul class="checks">
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Carefully vetted caregivers</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>A personal care plan for every client</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Flexible schedules: hourly, daily, or live-in</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Reliable, professional service</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Safety, dignity, and respect in everything we do</li>
+        </ul>
+        <div class="values" aria-label="Our values">
+          <span>Compassion</span><span>Integrity</span><span>Dignity</span><span>Respect</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why + Areas -->
-  <section id="why">
-    <div class="wrap two-col">
-      <div>
-        <div class="section-head" style="margin-bottom:28px">
-          <span class="eyebrow">Why Choose Us</span>
-          <h2>More than care, a relationship built on trust</h2>
-        </div>
-        <ul class="checks">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Experienced and carefully vetted caregivers</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Personalized care plans</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Flexible scheduling: hourly, daily, or live-in</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reliable and professional service</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>A commitment to safety, dignity, and respect</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Locally owned and operated</li>
-        </ul>
-        <div class="values">
-          <span>Compassion</span><span>Integrity</span><span>Dignity</span><span>Respect</span>
+  <!-- Insurance -->
+  <section class="insurance" id="insurance">
+    <div class="wrap">
+      <div class="insurance-box">
+        <div class="shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div>
+        <div>
+          <h2>Long-term care insurance accepted</h2>
+          <p>Have a long-term care insurance policy? We’ll give you detailed invoices and care records to help you get reimbursed.</p>
+          <small>Coverage depends on your individual policy.</small>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Where we serve -->
+  <section class="areas-section">
+    <div class="wrap split">
       <div>
-        <div class="section-head" style="margin-bottom:28px">
-          <span class="eyebrow">Where We Serve</span>
-          <h2>Proudly serving Northern Virginia</h2>
+        <div class="section-head">
+          <span class="eyebrow">Where we serve</span>
+          <h2>Serving families across Northern Virginia</h2>
         </div>
         <div class="areas">
           <span>Arlington</span><span>Alexandria</span><span>Falls Church</span><span>Fairfax</span>
           <span>McLean</span><span>Springfield</span><span>Woodbridge</span><span>Fredericksburg</span>
         </div>
-        <p class="areas-note">And surrounding communities. Not sure if we cover your area? Just give us a call.</p>
+        <p class="areas-note">And nearby communities. Not sure if we come to you? <a href="tel:+17034590883">Just give us a call.</a></p>
+      </div>
+      <div class="split-photo">
+        <img src="images/transportation-car-700.webp"
+             srcset="images/transportation-car-700.webp 700w, images/transportation-car-1200.webp 1200w"
+             sizes="(max-width: 900px) 100vw, 50vw"
+             width="1200" height="800" loading="lazy"
+             alt="A man helps an older adult with a walker get into a car">
       </div>
     </div>
   </section>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js');</script>
 <title>All Care With Love &amp; Integrity | Home Care in Northern Virginia</title>
 <meta name="description" content="Compassionate, non-medical home care in Northern Virginia. Personal care, companionship, meal prep, respite care and more. Long-term care insurance accepted.">
 <link rel="canonical" href="https://allcares4u.com/">
@@ -343,6 +344,21 @@
     .call-bar .btn-primary { flex: 1.4; }
     body { padding-bottom: 80px; }
   }
+  /* Scroll-in animation (added by the script at the bottom; only when JavaScript runs) */
+  .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--d, 0s); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  /* The hero fades in with CSS alone, so it never waits on JavaScript */
+  .hero-grid > * { animation: rise 1s var(--ease) both; }
+  .hero-grid > * + * { animation-delay: .15s; }
+  .trust-list { animation: rise 1s var(--ease) .3s both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+  /* Visitors who ask their device for less motion get no animations at all */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
+  }
 </style>
 </head>
 <body id="top">
@@ -640,6 +656,38 @@
   var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 24); };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Gently fade sections in as they scroll into view (skipped if the visitor prefers less motion)
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    var groups = [
+      '.section-head', '.service, .service-photo',
+      '.split > *', '.insurance-box', '.areas', '.areas-note', '.quote .wrap', '.contact-card'
+    ];
+    var seen = new Map();
+    document.querySelectorAll(groups.join(',')).forEach(function (el) {
+      // anything already on screen when the page opens just shows normally
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      // stagger items that share a parent (cards in a grid, hero columns, etc.)
+      var n = seen.get(el.parentNode) || 0;
+      seen.set(el.parentNode, n + 1);
+      el.style.setProperty('--d', Math.min(n, 6) * 0.08 + 's');
+      el.classList.add('reveal');
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        el.classList.add('in');
+        io.unobserve(el);
+        // hand control back to the element's own hover transitions once it has appeared
+        el.addEventListener('transitionend', function () {
+          el.classList.remove('reveal', 'in'); el.style.removeProperty('--d');
+        }, { once: true });
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  }
 </script>
 </body>
 </html>

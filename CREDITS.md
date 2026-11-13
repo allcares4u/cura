@@ -8,7 +8,7 @@ The originals were resized and compressed to WebP for fast loading. Each photo i
 
 | File(s) in `/images` | Where it's used | Source | Photographer |
 |---|---|---|---|
-| `hands-held-warm-1200.webp`, `hands-held-warm-700.webp` | Top of page (phones) | https://www.pexels.com/photo/hand-of-elderly-woman-17408384/ | Büşranur Aydın |
+| `hands-held-warm-1200.webp`, `hands-held-warm-700.webp` | Top of page | https://www.pexels.com/photo/hand-of-elderly-woman-17408384/ | Büşranur Aydın |
 | `care-hands-held-1200.webp`, `care-hands-held-700.webp` | "Where we serve" section | https://www.pexels.com/photo/elderly-woman-sharing-a-moment-with-adult-daughter-36578169/ | Kimy Moto |
 | `hands-reaching-1200.webp`, `hands-reaching-700.webp` | "Peace of mind" section | https://www.pexels.com/photo/people-holding-hands-8829175/ | Kampus Production |
 
